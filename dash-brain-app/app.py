@@ -2243,7 +2243,7 @@ if __name__ == "__main__":
     host = os.environ.get("HOST", "0.0.0.0")
     debug = os.environ.get("DEBUG", "False").lower() == "true"
     
-    app.run_server(
+    app.run(
         host=host,
         port=port, 
         debug=debug,
