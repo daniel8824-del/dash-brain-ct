@@ -1,0 +1,680 @@
+.card {
+    margin-top: 1em;
+    height: 60vh;
+    min-height: 280px !important;
+    max-height: 80vh;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 10px 5px 5px 5px !important; /* 상단 패딩 증가 */
+    margin-top: 0;
+    overflow: hidden; /* 넘치는 부분 숨기기 */
+}
+
+/* 그래프와 슬라이더 컨테이너 */
+.graph-container {
+    flex: 1 1 auto !important;
+    position: relative;
+    min-height: 220px !important;
+    padding: 0; /* 패딩 제거 */
+    padding-top: 5px !important; /* 상단 패딩 유지 */
+    padding-right: 0 !important; /* 오른쪽 패딩 제거 */
+    margin-top: 10px !important; /* 상단 여백 더 추가 */
+    margin-bottom: 0 !important;
+    height: calc(100% - 40px); /* 슬라이더 높이 감소 */
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    overflow: hidden; /* 넘치는 부분 숨기기 */
+    border-radius: 5px; /* 둥근 모서리 */
+    background-color: #000000; /* 명확한 배경색 */
+}
+
+/* 슬라이더 컨테이너 위치 조정 */
+.slider-container {
+    height: 35px !important; /* 높이 더 증가 */
+    padding: 0 15px !important; /* 좌우 패딩 추가 */
+    margin: 10px 0 15px 0 !important; /* 여백 증가 */
+    border: none !important;
+    background: transparent !important;
+    display: flex;
+    justify-content: center; /* 슬라이더 중앙 정렬 */
+    width: 100%;
+}
+
+div#app_title {
+    min-width: max-content;
+    color: white;
+}
+
+.tooltip-target {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.dash-graph {
+    height: 100%;
+    width: 100%;
+    min-height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* 넘치는 부분 숨기기 */
+}
+
+/* 새로 추가된 스타일 */
+.shadow-sm { 
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important; 
+}
+
+/* 환자 정보 카드만 타겟팅 */
+.container-fluid .row:first-child .col .shadow-sm {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.container-fluid .row:first-child .col .shadow-sm .card-header {
+    padding: 0.25rem 1rem !important;
+    margin: 0 !important;
+    height: auto !important;
+    min-height: auto !important;
+}
+
+.container-fluid .row:first-child .col .shadow-sm .card-body {
+    padding: 0.25rem 1rem !important;
+    margin: 0 !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding-bottom: 0.25rem !important;
+}
+
+/* 환자 정보 내부 요소들 */
+.container-fluid .row:first-child .col .shadow-sm .card-body .mb-3 {
+    margin-bottom: 0.15rem !important;
+}
+
+.container-fluid .row:first-child .col .shadow-sm .card-body .mb-2 {
+    margin-bottom: 0.1rem !important;
+}
+
+.container-fluid .row:first-child .col .shadow-sm .card-body .my-2 {
+    margin-top: 0.1rem !important;
+    margin-bottom: 0.1rem !important;
+}
+
+.card-header { 
+    padding: 0.2rem 0.75rem !important;
+    position: relative;
+    z-index: 10; /* 텍스트가 이미지 위에 오도록 */
+    background-color: rgba(248, 249, 250, 0.98) !important; /* 배경색 거의 불투명하게 */
+    border-bottom: 1px solid rgba(0,0,0,0.1) !important; /* 경계선 추가 */
+}
+
+.card-header h5 {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.15rem !important;
+}
+
+.alert { 
+    position: relative;
+    z-index: 10; /* 텍스트가 이미지 위에 오도록 */
+    padding: 0.15rem 0.35rem !important;
+    margin-bottom: 0.15rem !important;
+}
+
+.alert p, .alert div {
+    font-size: 0.8rem !important;
+    margin-bottom: 0 !important;
+}
+
+/* 슬라이더 영역 개선 */
+.rc-slider {
+    margin: 0 15px !important;
+    height: 25px !important; /* 높이 증가 */
+    padding-top: 8px !important; /* 패딩 증가 */
+    padding-bottom: 8px !important; /* 패딩 증가 */
+    width: 95% !important; /* 너비 확장 */
+}
+
+.rc-slider-track {
+    background-color: #007bff !important;
+    height: 8px !important; /* 트랙 높이 증가 */
+}
+
+.rc-slider-rail {
+    height: 8px !important; /* 레일 높이 증가 */
+    background-color: #dee2e6 !important;
+}
+
+.rc-slider-handle {
+    border-color: #007bff !important;
+    width: 24px !important; /* 핸들 크기 증가 */
+    height: 24px !important; /* 핸들 크기 증가 */
+    margin-top: -8px !important;
+    background-color: white !important;
+    border-width: 2px !important;
+}
+
+.rc-slider-handle:hover {
+    border-color: #0056b3 !important;
+    box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.2) !important;
+}
+
+.rc-slider-handle:active {
+    border-color: #0056b3 !important;
+    box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.3) !important;
+}
+
+/* 슬라이더 마크(숫자 레이블) 강제로 숨기기 */
+.rc-slider-mark {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+.rc-slider-mark-text {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* 커스텀 슬라이더 스타일 */
+.custom-slider {
+    padding: 12px 0 20px 0 !important; /* 패딩 증가 */
+    margin-bottom: 15px !important; /* 하단 여백 증가 */
+    width: 100% !important; /* 최대 너비 */
+}
+
+.custom-slider .rc-slider-handle {
+    border-color: #1890ff !important;
+    background-color: #1890ff !important;
+}
+
+.custom-slider .rc-slider-track {
+    background-color: #1890ff !important;
+}
+
+/* 그래프와 슬라이더 간격 조정 */
+.graph-container {
+    padding-bottom: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+/* 슬라이더 컨테이너 여백 조정 */
+.p-2.border-top {
+    padding: 0 0 15px 0 !important;
+    border-top: none !important;
+    background-color: transparent !important;
+}
+
+/* 슬라이더 컨테이너 여백 증가 */
+.slider-attached {
+    padding: 30px 0 40px 0 !important; 
+    margin: 20px 0 30px 0 !important;
+    position: relative !important;
+    height: auto !important;
+    min-height: 80px !important;
+    display: block !important;
+    border-top: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+/* 추가 개선 스타일 */
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.end-0 {
+    right: 0;
+}
+
+.m-2 {
+    margin: 0.5rem;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+    margin-bottom: 0.25rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 0.5rem !important;
+}
+
+.ml-2 {
+    margin-left: 0.5rem;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.pt-2 {
+    padding-top: 0.5rem;
+}
+
+.pb-2 {
+    padding-bottom: 0.5rem;
+}
+
+.pb-4 {
+    padding-bottom: 1.5rem;
+}
+
+.p-2 {
+    padding: 0.5rem;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.float-right {
+    float: right;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-light {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.border-bottom {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.bg-light {
+    background-color: #f8f9fa;
+}
+
+.bg-primary {
+    background-color: #007bff;
+}
+
+.bg-secondary {
+    background-color: #6c757d;
+}
+
+.py-2 {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+}
+
+.g-0 {
+    gap: 0;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+/* 작은 화면에서도 슬라이더가 잘 보이도록 조정 */
+@media (max-width: 1200px) {
+    .card {
+        min-height: 350px;
+    }
+    
+    .dash-graph {
+        min-height: 200px;
+    }
+    
+    .slider-container {
+        height: 40px !important; /* 더 큰 디바이스에서 높이 추가 증가 */
+        padding: 0 20px !important; /* 패딩 추가 증가 */
+        margin: 15px 0 20px 0 !important; /* 여백 추가 증가 */
+    }
+    
+    .rc-slider {
+        width: 90% !important; /* 너비 조정 */
+    }
+}
+
+/* 모바일 화면에서 추가 최적화 */
+@media (max-width: 768px) {
+    .card {
+        min-height: 300px;
+    }
+    
+    .card-body {
+        padding: 0.75rem !important;
+    }
+    
+    .slider-container {
+        height: 50px;
+    }
+    
+    .rc-slider {
+        margin: 8px 8px !important;
+    }
+    
+    .rc-slider-handle {
+        width: 22px !important;
+        height: 22px !important;
+    }
+}
+
+/* 이미지 선택 카드 전용 스타일 */
+.mb-4.shadow-sm:first-child .card {
+    min-height: auto !important;
+    height: auto !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.mb-4.shadow-sm:first-child .card-body {
+    padding: 0.25rem 1rem !important;
+    margin: 0 !important;
+    height: auto !important;
+    min-height: auto !important;
+}
+
+.mb-4.shadow-sm:first-child .card-header {
+    padding: 0.5rem 1rem !important;
+}
+
+/* 환자 정보 카드 내부 요소들의 여백도 줄이기 */
+.mb-4.shadow-sm:first-child .card-body .py-2 {
+    padding-top: 0.1rem !important;
+    padding-bottom: 0.1rem !important;
+}
+
+.mb-4.shadow-sm:first-child .card-body .mb-3 {
+    margin-bottom: 0.25rem !important;
+}
+
+.mb-4.shadow-sm:first-child .card-body .mb-2 {
+    margin-bottom: 0.15rem !important;
+}
+
+.mb-4.shadow-sm:first-child .card-body .my-2 {
+    margin-top: 0.15rem !important;
+    margin-bottom: 0.15rem !important;
+}
+
+/* 메인 컨테이너 여백 조정 */
+.container-fluid {
+    padding: 0.25rem !important;
+}
+
+/* Plotly 도구 모음(modebar) 스타일 개선 */
+.modebar {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: absolute !important;
+    top: 5px !important; /* 상단으로 더 올림 */
+    right: 5px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 1000 !important; /* 다른 요소보다 위에 표시 */
+}
+
+/* 모달바 버튼 그룹 간격 조정 */
+.modebar-group {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+/* 모달바 버튼 크기와 간격 조정 */
+.modebar-btn {
+    color: #333 !important;
+    opacity: 0.7 !important;
+    background-color: transparent !important;
+    padding: 0 2px !important; /* 좌우 패딩 줄임 */
+    margin: 0 1px !important; /* 버튼 간 간격 줄임 */
+    height: 20px !important; /* 버튼 높이 줄임 */
+    width: 20px !important; /* 버튼 너비 지정 */
+    line-height: 20px !important; /* 줄 높이도 맞춤 */
+}
+
+/* 모달바 버튼 아이콘 크기 조정 */
+.modebar-btn svg {
+    position: relative !important;
+    top: -2px !important;
+    width: 16px !important; /* 아이콘 크기 줄임 */
+    height: 16px !important; /* 아이콘 크기 줄임 */
+}
+
+.modebar-btn:hover {
+    color: #007bff !important;
+    opacity: 1.0 !important;
+    background-color: transparent !important;
+}
+
+.modebar-btn.active {
+    color: #007bff !important;
+    background-color: transparent !important;
+}
+
+/* 네비게이션 바 높이 줄이기 */
+.navbar {
+    padding: 0.2rem 1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* 행 간격 줄이기 */
+.row {
+    margin-bottom: 0.25rem !important;
+}
+
+/* 슬라이더 라벨 숨김 */
+.no-labels .rc-slider-mark-text {
+    display: none;
+}
+
+/* 마커 노출이 잘 되도록 그래프 영역 패딩 제거 */
+.js-plotly-plot .plotly .main-svg {
+    padding: 0;
+}
+
+/* 슬라이더 스타일 조정 */
+.custom-slider {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+/* Plotly 그래프 자체를 중앙에 위치시키기 */
+.js-plotly-plot {
+    margin: 0 auto !important;
+    width: 95% !important; /* 너비 제한 */
+    height: 95% !important; /* 높이 제한 */
+}
+
+/* Plotly 그래프 컨테이너 */
+.plot-container.plotly {
+    margin: 0 auto !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important; /* 상대 위치 설정 */
+}
+
+/* 그래프 캔버스 크기 조정 */
+.main-svg {
+    display: block !important;
+    margin: 0 auto !important;
+    max-width: 95% !important; /* 약간의 여백 유지 */
+    max-height: 95% !important; /* 높이도 제한 */
+    margin-top: 10px !important; /* 상단 여백 추가 */
+}
+
+/* 푸터 크기 줄이기 */
+.card-footer {
+    font-size: 0.85rem !important;
+    padding: 0.2rem 0.75rem !important;
+}
+
+/* Plotly 그래프 영역 내에서 모달바 위치 조정을 위한 추가 스타일 */
+.js-plotly-plot .plotly {
+    position: relative !important;
+}
+
+.js-plotly-plot .plotly .modebar-container {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+}
+
+/* 1-2단계의 모달바 스타일 (회색 배경) */
+#axial-card .modebar, #saggital-card .modebar {
+    background-color: rgba(200, 200, 200, 0.9) !important;
+    border-radius: 3px !important;
+    padding: 1px 2px !important; /* 패딩 줄임 */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
+    right: 3px !important;
+    top: 3px !important;
+}
+
+/* 1-2단계의 모달바 버튼 그룹 간격 조정 */
+#axial-card .modebar-group, #saggital-card .modebar-group {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+/* 1-2단계의 모달바 버튼 크기와 간격 조정 */
+#axial-card .modebar-btn, #saggital-card .modebar-btn {
+    color: #222 !important;
+    opacity: 0.95 !important;
+    font-weight: 500 !important;
+    padding: 0 1px !important; /* 패딩 줄임 */
+    margin: 0 !important; /* 마진 제거 */
+    height: 18px !important; /* 높이 줄임 */
+    width: 18px !important; /* 너비 줄임 */
+}
+
+/* 1-2단계의 모달바 버튼 호버 스타일 */
+#axial-card .modebar-btn:hover, #saggital-card .modebar-btn:hover {
+    color: #000 !important;
+    background-color: rgba(180, 180, 180, 0.9) !important;
+    opacity: 1.0 !important;
+}
+
+/* 1-2단계의 모달바 버튼 아이콘 스타일 */
+#axial-card .modebar-btn svg, #saggital-card .modebar-btn svg {
+    fill: #222 !important;
+    stroke: #222 !important;
+    width: 14px !important; /* 아이콘 크기 줄임 */
+    height: 14px !important; /* 아이콘 크기 줄임 */
+}
+
+/* 전체 앱 폰트 스타일 통일 */
+.dash-brain-app {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* 네비게이션 바 타이틀 */
+.navbar h3 {
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0 !important;
+}
+
+.navbar p {
+    font-size: 0.8rem !important;
+    margin-bottom: 0 !important;
+}
+
+/* 카드 헤더 제목 */
+.card-header h5 {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.25rem !important;
+}
+
+/* 알림 텍스트 스타일 통일 */
+.alert {
+    font-size: 0.85rem !important;
+    padding: 0.15rem 0.35rem !important;
+    margin-bottom: 0.15rem !important;
+}
+
+.alert p, .alert div {
+    font-size: 0.85rem !important;
+    margin-bottom: 0 !important;
+}
+
+.alert strong {
+    font-weight: 600 !important;
+}
+
+/* 그래프 제목 및 레이블 조정 */
+.js-plotly-plot .plotly .main-svg .g-xtitle text,
+.js-plotly-plot .plotly .main-svg .g-ytitle text {
+    font-size: 10px !important;
+}
+
+.js-plotly-plot .plotly .main-svg .xtick text,
+.js-plotly-plot .plotly .main-svg .ytick text {
+    font-size: 9px !important;
+}
+
+/* Plotly 그래프 레이블 스타일 */
+.js-plotly-plot .plotly .infolayer text {
+    font-size: 9px !important;
+}
+
+/* 작은 텍스트 */
+.small-text, small {
+    font-size: 0.8rem !important;
+}
+
+/* 버튼 텍스트 */
+.btn {
+    font-size: 0.85rem !important;
+}
+
+/* 드롭다운 텍스트 */
+.dropdown-item, .dropdown-menu {
+    font-size: 0.85rem !important;
+}
+
+/* 분석 결과 텍스트 */
+#analysis-results p, #infection-stats p {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* 푸터 텍스트 및 스타일 */
+.card-footer h6 {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.15rem !important;
+    font-weight: 500 !important;
+}
+
+/* 툴팁 텍스트 */
+.tooltip-inner, .tooltip {
+    font-size: 0.8rem !important;
+    max-width: 250px !important;
+}
