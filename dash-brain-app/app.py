@@ -2238,4 +2238,14 @@ def update_analysis_context(analysis_results, infection_stats, patient_info, sel
         return {}
 
 if __name__ == "__main__":
-    app.run(debug=True, dev_tools_props_check=False)
+    # Render 배포를 위한 포트 및 호스트 설정
+    port = int(os.environ.get("PORT", 8050))
+    host = os.environ.get("HOST", "0.0.0.0")
+    debug = os.environ.get("DEBUG", "False").lower() == "true"
+    
+    app.run_server(
+        host=host,
+        port=port, 
+        debug=debug,
+        dev_tools_props_check=False
+    )

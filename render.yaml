@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: brain-ct-analysis
+    env: python
+    buildCommand: pip install -r dash-brain-app/requirements.txt
+    startCommand: cd dash-brain-app && python app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.16
+      - key: DEBUG
+        value: false
+      - key: OPENAI_API_KEY
+        sync: false  # 사용자가 수동으로 설정해야 함 
